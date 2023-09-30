@@ -1,5 +1,5 @@
 import { Stack, Typography } from "@mui/material";
-import AssetsAtomicals from "./AssetsAtomicals";
+import AssetsAtomicals from "./ListComp/AssetsAtomicals";
 import AtomicalsSearch from "./AtomicalsSearch";
 
 // pages/Home.js

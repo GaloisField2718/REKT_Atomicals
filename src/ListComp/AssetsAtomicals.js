@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import LoadingScreen from './components/LoadingScreen';
+import LoadingScreen from '../components/LoadingScreen';
 import { Link } from 'react-router-dom';
 import { List, ListItem, Stack, Typography } from '@mui/material';
 // You may want to import another card or component to display your results
@@ -65,23 +65,25 @@ function AssetsAtomicals() {
             {isLoading ? <LoadingScreen /> :
                 <List sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
                     {data.result && data.result.result.map(item => (
-                        <ListItem sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            width: '10rem',
-                            border: '1px solid grey',     // Solid grey border
-                            backgroundColor: '#fff',
-                            ":hover": {
-                                backgroundColor: '#1976d25e'
-                            }  // Example background color (light grey)
-                        }} key={item.atomical_id}>
-                            <Link
-                                to={`/token?data=${item.atomical_id}`}>
+                        <Link
+                            to={`/token?data=${item.atomical_id}`}>
+                            <ListItem sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                width: '10rem',
+                                border: '1px solid grey',     // Solid grey border
+                                backgroundColor: '#fff',
+                                ":hover": {
+                                    backgroundColor: '#1976d25e'
+                                }  // Example background color (light grey)
+                            }} key={item.atomical_id}>
+
                                 <Typography fontWeight={600} textTransform={'uppercase'}>
                                     {item.ticker}
                                 </Typography>
-                            </Link>
-                        </ListItem>
+                            </ListItem>
+                        </Link>
+
                     ))}
                 </List>
             }
