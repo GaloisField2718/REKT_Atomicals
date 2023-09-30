@@ -9,6 +9,7 @@ function AtomicalsCard({ data }) {
 
     const hexString = desiredData;
     const imageURL = hexString ? hexToDataURL(hexString, 'image/jpeg') : '';
+    const dataC = data.result
 
     function hexToDataURL(hexString, mimeType = 'image/png') {
         const bytes = Buffer.from(hexString, 'hex');
@@ -34,14 +35,38 @@ function AtomicalsCard({ data }) {
             />
             <CardContent>
                 <Stack spacing={1}>
-                    <Typography variant="h5" component="div" sx={{ fontWeight: 'bold' }}>
-                        {data?.result?.result?.$ticker}
+                    <Typography variant="h5" component="div" sx={{ fontWeight: 'bold', textTransform: 'uppercase' }}>
+                        {dataC?.result?.$ticker}
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
-                        {data?.result?.result?.$max_supply}
+                        {dataC?.result?.$max_supply}
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
-                        #{data?.result?.result?.atomical_number}
+                        #{dataC?.result?.atomical_number}
+                    </Typography>
+                    <Typography variant="body2">
+                        Atomical ID: {dataC?.result?.atomical_id}
+                    </Typography>
+                    <Typography variant="body2">
+                        Bitwork: {dataC?.result?.$bitwork?.bitworkc}
+                    </Typography>
+                    <Typography variant="body2">
+                        Max Mints: {dataC?.result?.$max_mints}
+                    </Typography>
+                    <Typography variant="body2">
+                        Mint Amount: {dataC?.result?.$mint_amount}
+                    </Typography>
+                    <Typography variant="body2">
+                        Ticker Request Status: {dataC?.result?.$request_ticker_status?.status}
+                    </Typography>
+                    <Typography variant="body2">
+                        Atomical Ref: {dataC?.result?.atomical_ref}
+                    </Typography>
+                    <Typography variant="body2">
+                        Type: {dataC?.result?.type}
+                    </Typography>
+                    <Typography variant="body2">
+                        Subtype: {dataC?.result?.subtype}
                     </Typography>
                 </Stack>
             </CardContent>

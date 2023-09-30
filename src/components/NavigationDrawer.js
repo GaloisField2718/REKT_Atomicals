@@ -10,7 +10,8 @@ import NftIcon from '@mui/icons-material/Collections';
 
 function NavigationDrawer({ isOpen, onClose }) {
     return (
-        <Drawer open={isOpen} onClose={onClose}>
+        <Drawer open={isOpen} onClose={onClose}
+        >
             <Tabs
                 orientation="vertical"
                 variant="scrollable"

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { Home, Token, Nft } from './testP'; // adjust paths as needed
 import NavigationDrawer from './components/NavigationDrawer'; // adjust path as needed
-import { AppBar, Toolbar, IconButton, Box } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Box, Avatar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import './App.css';
 
 function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -11,8 +12,17 @@ function App() {
   return (
     <Router>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <AppBar position="static" sx={{ backgroundColor: 'black' }}>
           <Toolbar>
+            <Link to={'/'}>
+
+              <Avatar
+                src="/a.png"
+                alt="Logo"
+                sx={{ marginRight: 2 }} // Add some spacing on the right
+              />
+            </Link>
+
             {/* Other items can be added to the Toolbar here */}
             <Box sx={{ flexGrow: 1 }} /> {/* This will push the next item to the right */}
             <IconButton
