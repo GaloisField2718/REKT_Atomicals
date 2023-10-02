@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AtomicalsCard from './CardComp/AtomicalFTCard';
 import LoadingScreen from './components/LoadingScreen';
+import { Stack } from '@mui/material';
 
 function AtomicalsSearch() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -63,12 +64,12 @@ function AtomicalsSearch() {
 
     return (
 
-        <div>
+        <Stack width='100%'>
             {isLoading ? <LoadingScreen /> :
                 <AtomicalsCard data={data} />
 
             }
-        </div>
+        </Stack>
     );
 }
 export default AtomicalsSearch;

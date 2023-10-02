@@ -12,8 +12,8 @@ function LoadingScreen() {
                 gap: '2rem'
             }}
         >
-            <CircularProgress />
-            <Typography>Connection closed unexpectedly. Retrying...</Typography>
+            <CircularProgress color='warning' />
+            <Typography>Connection to ElectrumX server. Loading...</Typography>
         </Box>
     )
 }

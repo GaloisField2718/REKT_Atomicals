@@ -8,7 +8,7 @@ function Dashboard({ data }) {
         <Stack display='flex' alignItems='center' className="dashboard">
             <DataCard globalData={data.result.result}
             />
-            <DataTable locationInfo={data.result.result.location_info} />
+            {/* <DataTable locationInfo={data.result.result.location_info} /> */}
         </Stack>
     );
 }

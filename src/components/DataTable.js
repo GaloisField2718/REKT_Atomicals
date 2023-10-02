@@ -6,7 +6,7 @@ import {
 
 function LocationInfoTable({ locationInfo }) {
     return (
-        <Stack display='flex'>
+        <Stack display='flex' maxWidth={340}>
 
             <TableContainer component={Paper} style={{ overflowX: 'auto', maxWidth: '100%' }}>
                 <Table size="small" aria-label="location info table">

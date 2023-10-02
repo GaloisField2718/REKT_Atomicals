@@ -1,6 +1,7 @@
 import React from 'react';
 import { Buffer } from 'buffer';
 import { Card, CardMedia, CardContent, Typography, Stack, Divider } from '@mui/material';
+import AtomicalsLocationSearch from '../AtomicalsLocationSearch';
 
 function AtomicalsCard({ data }) {
     const fields = data.result.result.mint_data.fields;
@@ -27,8 +28,7 @@ function AtomicalsCard({ data }) {
     return (
         <Card
             sx={{
-                maxWidth: 345,
-                width: 345,
+                width: '100%',
                 m: 2,
                 boxShadow: 3, borderTopLeftRadius: '16px', borderTopRightRadius: '16px'
             }}
@@ -97,12 +97,11 @@ function AtomicalsCard({ data }) {
                     </Typography>
                     <Divider />
 
-                    <Typography color="textSecondary" variant="body2">
-                        Max Mints: {dataC?.result?.$max_mints}
-                    </Typography>
-                    <Typography color="textSecondary" variant="body2">
-                        Mint Amount: {dataC?.result?.$mint_amount}
-                    </Typography>
+                    <Stack>
+                        <AtomicalsLocationSearch />
+
+                    </Stack>
+
                     <Typography color="textSecondary" variant="body2">
                         Ticker Request Status: {dataC?.result?.$request_ticker_status?.status}
                     </Typography>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import LoadingScreen from './components/LoadingScreen';
 import Dashboard from './components/Dashboard';
+import { Stack } from '@mui/material';
 
 function AtomicalsLocationSearch() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -62,9 +63,9 @@ function AtomicalsLocationSearch() {
     }, []); // Removed connectToWebSocket() from the dependency array to avoid unnecessary re-renders
 
     return (
-        <div>
+        <Stack width='100%'>
             {isLoading ? <LoadingScreen /> : <Dashboard data={properData} />}
-        </div>
+        </Stack>
     );
 }
 
