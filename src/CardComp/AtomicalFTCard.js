@@ -28,6 +28,7 @@ function AtomicalsCard({ data }) {
     return (
         <Card
             sx={{
+                maxWidth: 345,
                 width: '100%',
                 m: 2,
                 boxShadow: 3, borderTopLeftRadius: '16px', borderTopRightRadius: '16px'
