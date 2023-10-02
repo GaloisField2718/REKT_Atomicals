@@ -1,12 +1,13 @@
 import { Stack, Typography } from "@mui/material";
 import AssetsAtomicals from "./ListComp/AssetsAtomicals";
 import AtomicalsSearch from "./AtomicalsSearch";
+import AtomicalsLocationSearch from "./AtomicalsLocationSearch";
 
 // pages/Home.js
 export function Home() {
     return <Stack width='100%' display='flex' alignItems='center' gap={4}>
 
-        <Typography variant="h2">
+        <Typography variant="h2" fontWeight={600} fontFamily='AR One Sans'>
             ARC-20
         </Typography>
         <AssetsAtomicals />
@@ -23,5 +24,7 @@ export function Token() {
 
 // pages/Nft.js
 export function Nft() {
-    return <div>NFT Page</div>;
+    return <div>
+        <AtomicalsLocationSearch />
+    </div>;
 }

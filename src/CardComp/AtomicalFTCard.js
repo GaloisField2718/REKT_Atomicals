@@ -1,6 +1,6 @@
 import React from 'react';
 import { Buffer } from 'buffer';
-import { Card, CardMedia, CardContent, Typography, Stack } from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, Stack, Divider } from '@mui/material';
 
 function AtomicalsCard({ data }) {
     const fields = data.result.result.mint_data.fields;
@@ -16,13 +16,21 @@ function AtomicalsCard({ data }) {
         const base64 = bytes.toString('base64');
         return `data:${mimeType};base64,${base64}`;
     }
-    console.log(data?.result?.result?.atomical_number);
+    function truncateText(input, maxLength) {
+        if (input && input.length > maxLength) {
+            return `${input.substring(0, maxLength - 3)}...`;
+        }
+        return input;
+    }
+
+
     return (
         <Card
             sx={{
                 maxWidth: 345,
-                m: 2, // margin
-                boxShadow: 3
+                width: 345,
+                m: 2,
+                boxShadow: 3, borderTopLeftRadius: '16px', borderTopRightRadius: '16px'
             }}
         >
             <CardMedia
@@ -34,38 +42,75 @@ function AtomicalsCard({ data }) {
                 sx={{ borderTopLeftRadius: '16px', borderTopRightRadius: '16px' }}
             />
             <CardContent>
+
                 <Stack spacing={1}>
-                    <Typography variant="h5" component="div" sx={{ fontWeight: 'bold', textTransform: 'uppercase' }}>
-                        {dataC?.result?.$ticker}
+                    <Stack display='flex' alignItems={'center'}>
+                        <Typography variant="h5" fontWeight={700} textTransform='uppercase' component="div" >
+                            {dataC?.result?.$ticker}
+                        </Typography>
+                    </Stack>
+
+                    <Divider />
+
+
+                    <Stack display='flex' flexDirection='row' alignItems={'center'} justifyContent='space-between'>
+                        <Typography variant="body" color="textSecondary">
+                            Atomical number :
+                        </Typography>
+                        <Typography variant="body" >
+                            #{dataC?.result?.atomical_number}
+                        </Typography>
+                    </Stack>
+
+                    <Stack display='flex' flexDirection='row' alignItems={'center'} justifyContent='space-between'>
+                        <Typography variant="body" color="textSecondary">
+                            commit bitwork :
+                        </Typography>
+                        <Typography variant="body" >
+                            {dataC?.result?.$bitwork?.bitworkc}
+                        </Typography>
+                    </Stack>
+
+                    <Stack display='flex' flexDirection='row' alignItems={'center'} justifyContent='space-between'>
+                        <Typography variant="body" color="textSecondary">
+                            total supply :
+                        </Typography>
+                        <Typography variant="body" >
+                            {dataC?.result?.$max_supply}
+                        </Typography>
+                    </Stack>
+
+                    <Divider />
+
+                    <Typography color="textSecondary" variant="body2">
+                        Atomical ID:
                     </Typography>
-                    <Typography variant="subtitle1" color="textSecondary">
-                        {dataC?.result?.$max_supply}
+
+                    <Typography variant="caption">
+                        {truncateText(dataC?.result?.atomical_id, 33)}
                     </Typography>
-                    <Typography variant="subtitle1" color="textSecondary">
-                        #{dataC?.result?.atomical_number}
+                    <Typography color="textSecondary" variant="body2">
+                        Atomical Ref:
                     </Typography>
-                    <Typography variant="body2">
-                        Atomical ID: {dataC?.result?.atomical_id}
+                    <Typography variant="caption">
+                        {truncateText(dataC?.result?.atomical_ref, 33)}
                     </Typography>
-                    <Typography variant="body2">
-                        Bitwork: {dataC?.result?.$bitwork?.bitworkc}
-                    </Typography>
-                    <Typography variant="body2">
+                    <Divider />
+
+                    <Typography color="textSecondary" variant="body2">
                         Max Mints: {dataC?.result?.$max_mints}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography color="textSecondary" variant="body2">
                         Mint Amount: {dataC?.result?.$mint_amount}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography color="textSecondary" variant="body2">
                         Ticker Request Status: {dataC?.result?.$request_ticker_status?.status}
                     </Typography>
-                    <Typography variant="body2">
-                        Atomical Ref: {dataC?.result?.atomical_ref}
-                    </Typography>
-                    <Typography variant="body2">
+
+                    <Typography color="textSecondary" variant="body2">
                         Type: {dataC?.result?.type}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography color="textSecondary" variant="body2">
                         Subtype: {dataC?.result?.subtype}
                     </Typography>
                 </Stack>

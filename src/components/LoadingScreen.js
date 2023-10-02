@@ -1,4 +1,4 @@
-import { Box, CircularProgress } from '@mui/material'
+import { Box, CircularProgress, Typography } from '@mui/material'
 import React from 'react'
 
 function LoadingScreen() {
@@ -8,9 +8,12 @@ function LoadingScreen() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
+                flexDirection: 'column',
+                gap: '2rem'
             }}
         >
             <CircularProgress />
+            <Typography>Connection closed unexpectedly. Retrying...</Typography>
         </Box>
     )
 }
