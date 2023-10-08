@@ -12,7 +12,7 @@ function TerminalPage() {
                 CLI -H
             </Typography>
             <Typography variant="body1" paragraph>
-                A simple page with title, description, and accordion.
+                Command line utility for interacting with Atomicals.
             </Typography>
 
             {commandData.map((cmd, idx) => (
