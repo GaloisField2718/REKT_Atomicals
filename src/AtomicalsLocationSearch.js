@@ -14,6 +14,10 @@ function AtomicalsLocationSearch() {
     const atomicalAliasOrId = myParam;
 
     const connectToWebSocket = () => {
+        if (properData !== null) {
+            return
+        }
+
         if (retryCount >= MAX_RETRIES) {
             console.error('Max retries reached. Stopping connection attempts.');
             return;

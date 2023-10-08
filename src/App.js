@@ -5,6 +5,8 @@ import NavigationDrawer from './components/NavigationDrawer'; // adjust path as 
 import { AppBar, Toolbar, IconButton, Box, Avatar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import './App.css';
+import TerminalPage from './components/TerminalPage';
+import HomePage from './HomePage';
 
 function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -49,9 +51,11 @@ function App() {
           <NavigationDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
 
           <Routes>
-            <Route path="/token" element={<Token />} />
+            {/*  <Route path="/token" element={<Token />} />
             <Route path="/nft" element={<Nft />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home />} /> */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/terminal" element={<TerminalPage />} />
           </Routes>
         </Box>
       </Box>

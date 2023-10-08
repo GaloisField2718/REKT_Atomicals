@@ -6,7 +6,7 @@ import { Stack } from '@mui/material';
 function Dashboard({ data }) {
     return (
         <Stack display='flex' alignItems='center' className="dashboard">
-            <DataCard globalData={data.result.result}
+            <DataCard globalData={data.result}
             />
             {/* <DataTable locationInfo={data.result.result.location_info} /> */}
         </Stack>
