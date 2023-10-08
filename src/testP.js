@@ -10,6 +10,9 @@ export function Home() {
         <Typography variant="h2" fontWeight={600} fontFamily='AR One Sans'>
             ARC-20
         </Typography>
+        <Typography variant="body1" fontFamily='AR One Sans' color='red'>
+            (unstable version)
+        </Typography>
         <AssetsAtomicals />
 
     </Stack>;

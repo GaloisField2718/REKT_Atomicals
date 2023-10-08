@@ -21,8 +21,8 @@ function NavigationDrawer({ isOpen, onClose }) {
             >
                 <Tab icon={<HomeIcon />} label="Home" component={Link} to="/" />
                 <Tab icon={<Terminal />} label="Terminal" component={Link} to="/terminal" />
-                {/* <Tab icon={<TokenIcon />} label="Token" component={Link} to="/token" />
-                <Tab icon={<NftIcon />} label="NFT" component={Link} to="/nft" /> */}
+                <Tab icon={<TokenIcon />} label="Token" component={Link} to="/arc" />
+                {/*  <Tab icon={<NftIcon />} label="NFT" component={Link} to="/nft" /> */}
             </Tabs>
         </Drawer>
     );

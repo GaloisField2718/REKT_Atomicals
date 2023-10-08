@@ -51,9 +51,9 @@ function App() {
           <NavigationDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
 
           <Routes>
-            {/*  <Route path="/token" element={<Token />} />
+            <Route path="/token" element={<Token />} />
             <Route path="/nft" element={<Nft />} />
-            <Route path="/" element={<Home />} /> */}
+            <Route path="/arc" element={<Home />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/terminal" element={<TerminalPage />} />
           </Routes>
