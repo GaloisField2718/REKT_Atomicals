@@ -58,7 +58,7 @@ function AssetsAtomicals() {
         return () => {
             // Cleanup logic if needed
         };
-    }, []);
+    }, [connectToWebSocket()]);
 
     return (
         <Stack width='100%'>
@@ -74,7 +74,8 @@ function AssetsAtomicals() {
                                 border: '1px solid grey',     // Solid grey border
                                 backgroundColor: '#fff',
                                 ":hover": {
-                                    backgroundColor: '#1976d25e'
+                                    color: '#f2f2f2',
+                                    backgroundColor: '#292929' //'#1976d25e'
                                 }  // Example background color (light grey)
                             }} key={item.atomical_id}>
 

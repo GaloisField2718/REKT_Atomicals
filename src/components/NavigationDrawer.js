@@ -7,6 +7,7 @@ import Tab from '@mui/material/Tab';
 import HomeIcon from '@mui/icons-material/Home';
 import TokenIcon from '@mui/icons-material/AccountBalanceWallet';
 import NftIcon from '@mui/icons-material/Collections';
+import { Terminal } from '@mui/icons-material';
 
 function NavigationDrawer({ isOpen, onClose }) {
     return (
@@ -19,8 +20,9 @@ function NavigationDrawer({ isOpen, onClose }) {
                 textColor="primary"
             >
                 <Tab icon={<HomeIcon />} label="Home" component={Link} to="/" />
-                <Tab icon={<TokenIcon />} label="Token" component={Link} to="/token" />
-                <Tab icon={<NftIcon />} label="NFT" component={Link} to="/nft" />
+                <Tab icon={<Terminal />} label="Terminal" component={Link} to="/terminal" />
+                <Tab icon={<TokenIcon />} label="Token" component={Link} to="/arc" />
+                {/*  <Tab icon={<NftIcon />} label="NFT" component={Link} to="/nft" /> */}
             </Tabs>
         </Drawer>
     );

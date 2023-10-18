@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import AtomicalsCard from './CardComp/AtomicalFTCard';
 import LoadingScreen from './components/LoadingScreen';
+import Dashboard from './components/Dashboard';
 import { Stack } from '@mui/material';
 
-function AtomicalsSearch() {
+function AtomicalsLocationSearch() {
     const urlParams = new URLSearchParams(window.location.search);
     const myParam = urlParams.get('data');
-    const [data, setData] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-    const RETRY_DELAY = 10000; // 5 seconds. Adjust as needed.
-    const MAX_RETRIES = 10; // Adjust as needed.
+    const [properData, setproperData] = useState(null)
+    const RETRY_DELAY = 10000;
+    const MAX_RETRIES = 10;
     let retryCount = 0;
-    const atomicalAliasOrId = myParam
+    const atomicalAliasOrId = myParam;
+
     const connectToWebSocket = () => {
+        if (properData !== null) {
+            return
+        }
+
         if (retryCount >= MAX_RETRIES) {
             console.error('Max retries reached. Stopping connection attempts.');
             return;
@@ -21,14 +26,14 @@ function AtomicalsSearch() {
         const connection = new WebSocket('wss://electrumx.atomicals.xyz:50012');
 
         connection.onopen = function (event) {
-            retryCount = 0; // Reset retry count on successful connection
+            retryCount = 0;
             setTimeout(() => {
                 setIsLoading(false);
             }, 1300);
             const payload = {
                 id: 1,
-                method: "blockchain.atomicals.get",
-                params: [atomicalAliasOrId] // Ensure this value is available
+                method: "blockchain.atomicals.get_location",
+                params: [atomicalAliasOrId]
             };
             connection.send(JSON.stringify(payload));
         };
@@ -36,17 +41,16 @@ function AtomicalsSearch() {
         connection.onerror = function (error) {
             console.error('WebSocket Connection Error:', error);
             retryCount++;
-            setTimeout(connectToWebSocket, RETRY_DELAY); // Retry after a delay
+            setTimeout(connectToWebSocket, RETRY_DELAY);
         };
 
         connection.onmessage = function (event) {
             const parsedData = JSON.parse(event.data);
-            setData(parsedData);
+            setproperData(parsedData)
+            console.log(parsedData); // Logging the received data
         };
 
         connection.onclose = function (event) {
-            // Optionally, you can attempt to reconnect when a connection is closed.
-            // This depends on your use case.
             if (!event.wasClean && retryCount < MAX_RETRIES) {
                 console.warn('Connection closed unexpectedly. Retrying...');
                 retryCount++;
@@ -60,16 +64,13 @@ function AtomicalsSearch() {
         return () => {
             // Cleanup logic if needed
         };
-    }, [connectToWebSocket()]);
+    }, []); // Removed connectToWebSocket() from the dependency array to avoid unnecessary re-renders
 
     return (
-
         <Stack width='100%'>
-            {isLoading ? <LoadingScreen /> :
-                <AtomicalsCard data={data} />
-
-            }
+            {isLoading ? <LoadingScreen /> : <Dashboard data={properData} />}
         </Stack>
     );
 }
-export default AtomicalsSearch;
+
+export default AtomicalsLocationSearch;
